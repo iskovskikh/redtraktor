@@ -1,0 +1,11 @@
+version: '3'
+services:
+    web:
+        build: ./web/
+        ports:
+            - "8000:8000"
+        volumes:
+            - ./web/:/data/web
+        working_dir: /data/web
+        command:
+            "/usr/bin/gunicorn redtraktor.wsgi:application -w 2 -b :8000"
