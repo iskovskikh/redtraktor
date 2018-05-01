@@ -12,3 +12,5 @@ RUN pip3 install -r requirements.txt
 
 RUN apk del -r python3-dev
 COPY . /data/web
+
+##RUN mkdir -p /data/web/static/admin
