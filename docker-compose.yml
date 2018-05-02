@@ -1,22 +1,49 @@
 version: '3'
 services:
     web:
+        restart: always
         build: ./web/
-        ports:
-            - "8000:8000"
+        expose:
+            - "8000"
         volumes:
             - ./web/:/data/web
         working_dir: /data/web
-        command:
-            "/usr/bin/gunicorn redtraktor.wsgi:application -w 2 -b :8000"
+        command: "/usr/bin/gunicorn redtraktor.wsgi:application -w 2 -b :8000"
 
     nginx:
+        restart: always
         build: ./nginx/
+
         ports:
             - "80:80"
         volumes:
-            - web:/data/web
-        links:
-            - web:web
+            - ./web/:/data/web
+
+
+    postgres:
+        restart: always
+        image: postgres:alpine
+        volumes:
+            - data:/var/lib/postgresql
+            - ./postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+            - ./backups/postgresql:/backup
+        env_file:
+            - env
+        expose:
+            - "5432"
+
+    redis:
+        restart: always
+        image: redis:alpine
+        expose:
+            - "6379"
+
+    data:
+        restart: always
+        image: alpine
+        volumes:
+          - data:/var/lib/postgresql
+        command: "true"
 volumes:
     web:
+    data:
