@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Title</title>
+</head>
+<body>
+<!--Header-->
+{% block header %}
+{% include 'header.html'%}
+{% endblock %}
+<!--Header Close-->
+<!--Content-->
+
+<div class="page-content">
+
+{% block breadcrumbs%}
+    <!--Breadcrumbs-->
+{% endblock %}
+
+{% block content%}
+    <div class="container">
+    </div>
+{% endblock %}
+</div>
+<!--Content Close-->
+<!--Footer-->
+{% block footer %}
+{% include 'footer.html'%}
+{% endblock %}
+<!--Footer Close-->
+</body>
+</html>
