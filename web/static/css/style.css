@@ -68,6 +68,7 @@ footer .copyright a:hover {
 
 .page-content {
     padding-top: 144px;
+    min-height:700px
 }
 .menu {
     display: block;
@@ -125,6 +126,10 @@ header .container {
     color: #2ba8db;
 }
 
+.category-grid {
+    width: 100%;
+    padding: 12px 0 36px 0;
+}
 .category-grid .category {
     padding: 0;
 }
@@ -171,4 +176,14 @@ header .container {
     -webkit-border-radius: 0 3px 0 0;
     -moz-border-radius: 0 3px 0 0;
     border-radius: 0 3px 0 0;
+}
+
+.navbar {
+    height:144px
+}
+
+.breadcrumb {
+    padding: 24px 15px 0 15px;
+    background: none;
+    background-color: white;
 }

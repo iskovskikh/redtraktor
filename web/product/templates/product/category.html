@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block breadcrumbs %}
+<div class="container">
+    {% if breadcrumbs|length > 1 %}
+        <ol class="breadcrumb">
+        {% for breadcrumb in breadcrumbs%}
+            {% if forloop.counter == breadcrumbs|length %}
+                <li class="breadcrumb-item">{{ breadcrumb.name }}</li>
+            {% else %}
+                <li class="breadcrumb-item"><a href="{% url 'category' breadcrumb.get_absolute_url%}">{{ breadcrumb.name }}</a></li>
+            {% endif %}
+        {% endfor %}
+        </ol>
+    {% endif%}
+</div>
+{% endblock %}
+
+{% block content%}
+<section class="category-grid">
+    <div class="container">
+        <div class="row">
+        {% for category in categories %}
+            <div class="category col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                <a href="{% url 'category' category.get_absolute_url %}">
+                    {% if category.image %}
+                        <img class="img-fluid" src="{{ category.image.url }}">
+                    {% else %}
+                        <img class="img-fluid" src="/media/placeholder.png">
+                    {% endif %}
+                    <p>{{ category.name }}</p>
+                </a>
+            </div>
+        {% endfor%}
+        </div>
+    </div>
+</section>
+{% endblock %}

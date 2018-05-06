@@ -2,11 +2,11 @@ version: '3'
 services:
 
     postgres:
-        restart: always
+        #restart: always
         build: ./postgres/
         volumes:
             - postgres_data:/var/lib/postgresql
-            - ./postgres/docker-entrypoint:/docker-entrypoint
+            - ./postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
             - ./backups/postgresql:/backup
         env_file:
             - common.env
@@ -14,34 +14,41 @@ services:
             - "5432"
 
 
+    redis:
+        #restart: always
+        image: redis:alpine
+        expose:
+            - "6379"
+
     web:
-        restart: always
+        #restart: always
         build: ./web/
         expose:
             - "8000"
         volumes:
             - ./web/:/data/web
+            - ./web/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
         working_dir: /data/web
         env_file:
             - common.env
+
         command: "/usr/bin/gunicorn redtraktor.wsgi:application -w 2 -b :8000"
         depends_on:
             - postgres
+            - redis
 
     nginx:
-        restart: always
+        #restart: always
         build: ./nginx/
 
         ports:
             - "80:80"
         volumes:
             - ./web/:/data/web
+        depends_on:
+            - web
 
-    redis:
-        restart: always
-        image: redis:alpine
-        expose:
-            - "6379"
+
 
 #    data:
 #        restart: always
