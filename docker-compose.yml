@@ -13,7 +13,6 @@ services:
         expose:
             - "5432"
 
-
     redis:
         #restart: always
         image: redis:alpine
@@ -37,6 +36,7 @@ services:
             - postgres
             - redis
 
+
     nginx:
         #restart: always
         build: ./nginx/
@@ -47,7 +47,23 @@ services:
             - ./web/:/data/web
         depends_on:
             - web
+#            - pgadmin
 
+#    pgadmin:
+
+#        image: fenglc/pgadmin4:alpine
+#        image: dpage/pgadmin4
+#        expose:
+#            - "5050"
+#        build: ./pgadmin/
+#        ports:
+#            - "80:80"
+#        environment:
+#              PGADMIN_DEFAULT_EMAIL: 'iskovskikh@gmail.com'
+#              PGADMIN_DEFAULT_PASSWORD: 'postgres'
+#
+#        depends_on:
+#            - postgres
 
 
 #    data:

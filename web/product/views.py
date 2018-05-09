@@ -8,8 +8,12 @@ from .models import Product
 from django.shortcuts import *
 import pprint
 
-def product(request):
-    context = {}
+def product(request, slug = None):
+
+
+    context = {
+        'slug': slug
+    }
     return render(request, 'product/product.html', context)
 
 def category(request, hierarchy= None):
