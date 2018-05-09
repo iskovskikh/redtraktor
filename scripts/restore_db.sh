@@ -1,2 +1,3 @@
 #!/bin/bash
-cat $1 | docker.exe exec -i shop_postgres_1 psql -U postgres
+source '../common.env'
+cat $1 | docker exec -i redtraktor_postgres_1 psql -U postgres
