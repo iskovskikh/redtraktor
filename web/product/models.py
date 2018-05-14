@@ -1,20 +1,30 @@
 from django.db import models
 from django.utils import timezone
 from django.urls import reverse
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.fields import GenericRelation
+from django.contrib.contenttypes.models import ContentType
 
 # Create your models here.
+
+class Image(models.Model):
+    caption = models.TextField()
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+    image = models.ImageField(null = True, blank = True)
 
 class Product(models.Model):
     name = models.CharField(max_length=256)
     slug = models.SlugField(max_length=40)
     description = models.TextField()
-    image = models.ImageField(null=True, blank=True)
+    # image = models.ImageField(null=True, blank=True)
+    images = GenericRelation(Image)
     price = models.DecimalField(max_digits=12, decimal_places=2)
     pub_date = models.DateTimeField('date published')
     mod_date = models.DateTimeField('date modified')
 
     def save(self, *args, **kwargs):
-        ''' On save, update timestamps '''
         if not self.id:
             self.pub_date = timezone.now()
         self.mod_date = timezone.now()
@@ -26,7 +36,7 @@ class Category(models.Model):
     #nesting_level = models.IntegerField()
     product = models.ManyToManyField(Product, blank=True)
     parent = models.ForeignKey('self', default=None, null=True, blank=True, related_name='children', on_delete=models.CASCADE)
-    image = models.ImageField(null=True, blank=True)
+    # image = models.ImageField(null=True, blank=True)
     pub_date = models.DateTimeField('date published')
     mod_date = models.DateTimeField('date modified')
 

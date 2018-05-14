@@ -26,12 +26,12 @@ services:
             - "8000"
         volumes:
             - ./web/:/data/web
-            - ./web/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+            - ./web/docker-entrypoint.d:/docker-entrypoint.d
         working_dir: /data/web
         env_file:
             - common.env
 
-        command: "/usr/bin/gunicorn redtraktor.wsgi:application -w 2 -b :8000"
+        command: ""
         depends_on:
             - postgres
             - redis

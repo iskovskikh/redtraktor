@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block breadcrumbs %}
-<div class="container">
     {% if breadcrumbs|length > 1 %}
         <ol class="breadcrumb">
         {% for breadcrumb in breadcrumbs%}
@@ -14,12 +13,10 @@
         {% endfor %}
         </ol>
     {% endif%}
-</div>
 {% endblock %}
 
 {% block content%}
-<section class="category-grid">
-    <div class="container">
+    <section class="category-grid">
         <div class="row">
         {% for category in categories %}
             <div class="category col-lg-2 col-md-2 col-sm-4 col-xs-6">
@@ -34,6 +31,5 @@
             </div>
         {% endfor%}
         </div>
-    </div>
-</section>
+    </section>
 {% endblock %}

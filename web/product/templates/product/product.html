@@ -1,9 +1,24 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block breadcrumbs %}
+    {% if breadcrumbs|length > 1 %}
+        <ol class="breadcrumb">
+        {% for breadcrumb in breadcrumbs%}
+            {% if forloop.counter == breadcrumbs|length %}
+                <li class="breadcrumb-item">{{ breadcrumb.name }}</li>
+            {% else %}
+                <li class="breadcrumb-item"><a href="{% url 'category' breadcrumb.get_absolute_url%}">{{ breadcrumb.name }}</a></li>
+            {% endif %}
+        {% endfor %}
+        </ol>
+    {% endif%}
 {% endblock %}
 
 {% block content%}
-<h1>products</h1>
-<h2>{{slug}}</h2>
+    <section class="product">
+        <div class="row">
+        {{ slug }}
+        </div>
+    </section>
 {% endblock %}

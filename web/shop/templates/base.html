@@ -21,15 +21,10 @@
 <!--Content-->
 
 <div class="page-content">
-
-{% block breadcrumbs%}
-    <!--Breadcrumbs-->
-{% endblock %}
-
-{% block content%}
     <div class="container">
+        {% block breadcrumbs%}<!--Breadcrumbs-->{% endblock %}
+        {% block content%}<!--Content-->{% endblock %}
     </div>
-{% endblock %}
 </div>
 <!--Content Close-->
 <!--Footer-->

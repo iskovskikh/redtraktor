@@ -19,5 +19,6 @@ COPY . /data/web
 #RUN python3 /data/web/manage.py migrate
 #RUN python3 /data/web/manage.py createsuperuser --username admin --email iskovskikh@gmail.com
 
+ENTRYPOINT /docker-entrypoint.d/redtraktor_initweb.sh
 
 ##RUN mkdir -p /data/web/static/admin
