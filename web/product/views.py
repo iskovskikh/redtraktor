@@ -9,8 +9,6 @@ from django.shortcuts import *
 import pprint
 
 def product(request, slug = None):
-
-
     context = {
         'slug': slug
     }

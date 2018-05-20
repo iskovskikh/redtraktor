@@ -1,0 +1,16 @@
+<section class="category-grid">
+    <div class="row">
+    {% for category in categories %}
+        <div class="category col-lg-2 col-md-2 col-sm-4 col-xs-6">
+            <a href="{% url 'category' category.get_absolute_url %}">
+                {% if category.image %}
+                    <img class="img-fluid" src="{{ category.image.url }}">
+                {% else %}
+                    <img class="img-fluid" src="/media/placeholder.png">
+                {% endif %}
+                <p>{{ category.name }}</p>
+            </a>
+        </div>
+    {% endfor%}
+    </div>
+</section>
