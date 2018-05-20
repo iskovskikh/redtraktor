@@ -17,7 +17,8 @@ class ProductAdmin(admin.ModelAdmin):
 
 class CategoryAdmin(admin.ModelAdmin):
     fieldsets = []
-    list_display = ('name', 'image')
+    #list_display = ('name', 'images')
+    inlines = [ImageInline]
     readonly_fields = ('pub_date', 'mod_date')
 
 

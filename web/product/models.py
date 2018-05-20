@@ -14,27 +14,11 @@ class Image(models.Model):
     content_object = GenericForeignKey('content_type', 'object_id')
     image = models.ImageField(null = True, blank = True)
 
-class Product(models.Model):
-    name = models.CharField(max_length=256)
-    slug = models.SlugField(max_length=40)
-    description = models.TextField()
-    # image = models.ImageField(null=True, blank=True)
-    images = GenericRelation(Image)
-    price = models.DecimalField(max_digits=12, decimal_places=2)
-    pub_date = models.DateTimeField('date published')
-    mod_date = models.DateTimeField('date modified')
-
-    def save(self, *args, **kwargs):
-        if not self.id:
-            self.pub_date = timezone.now()
-        self.mod_date = timezone.now()
-        return super(Product, self).save(*args, **kwargs)
-
 class Category(models.Model):
     name = models.CharField(max_length=256)
     slug = models.SlugField(max_length=40)
-    #nesting_level = models.IntegerField()
-    product = models.ManyToManyField(Product, blank=True)
+    # nesting_level = models.IntegerField()
+    # product = models.ManyToManyField(Product, blank=True)
     parent = models.ForeignKey('self', default=None, null=True, blank=True, related_name='children', on_delete=models.CASCADE)
     # image = models.ImageField(null=True, blank=True)
     pub_date = models.DateTimeField('date published')
@@ -75,3 +59,24 @@ class Category(models.Model):
             self.pub_date = timezone.now()
         self.mod_date = timezone.now()
         return super(Category, self).save(*args, **kwargs)
+
+    def get_products(self):
+        products = Product.objects.filter(category=self)
+        return products #self.product.objects.all()
+
+class Product(models.Model):
+    name = models.CharField(max_length=256)
+    slug = models.SlugField(max_length=40)
+    description = models.TextField()
+    # image = models.ImageField(null=True, blank=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    images = GenericRelation(Image)
+    price = models.DecimalField(max_digits=12, decimal_places=2)
+    pub_date = models.DateTimeField('date published')
+    mod_date = models.DateTimeField('date modified')
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.pub_date = timezone.now()
+        self.mod_date = timezone.now()
+        return super(Product, self).save(*args, **kwargs)

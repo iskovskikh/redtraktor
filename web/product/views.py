@@ -39,6 +39,7 @@ def category(request, hierarchy= None):
     context = {
         'parent':parent,
         'categories': parent.children.all,
+        'products': parent.get_products,
         'breadcrumbs': parent.get_all_parents_path(),
     }
 
