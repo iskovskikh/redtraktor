@@ -80,3 +80,6 @@ class Product(models.Model):
             self.pub_date = timezone.now()
         self.mod_date = timezone.now()
         return super(Product, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return '/product' + str(self.slug)
