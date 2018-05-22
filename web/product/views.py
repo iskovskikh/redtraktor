@@ -19,7 +19,7 @@ def product(request, slug = None):
     breadcrumbs.append({'name':product.name, 'url':product.get_absolute_url()})
 
     context = {
-        'slug': slug,
+        'product': product,
         'breadcrumbs': breadcrumbs,
     }
     return render(request, 'product/product.html', context)
@@ -28,7 +28,7 @@ def category(request, hierarchy= None):
 
     if hierarchy != None:
         category_slug = hierarchy.split('/')
-        category_queryset = list(Category.objects.all())
+        # category_queryset = list(Category.objects.all())
         parent = get_object_or_404(Category,slug=category_slug[-1])
         path = parent.get_absolute_url().split('/')
         if set(category_slug) != set(path[::-1]):

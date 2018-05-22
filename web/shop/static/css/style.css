@@ -187,3 +187,10 @@ header .container {
     background: none;
     background-color: white;
 }
+
+.product .price {
+    display: inline-block;
+    margin: 0 15px 10px 0;
+    font-size: 1.75em;
+    font-weight: 900;
+}

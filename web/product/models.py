@@ -9,10 +9,12 @@ from django.contrib.contenttypes.models import ContentType
 
 class Image(models.Model):
     caption = models.TextField()
+    image = models.ImageField(null = True, blank = True)
+
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
-    image = models.ImageField(null = True, blank = True)
+
 
 class Category(models.Model):
     name = models.CharField(max_length=256)
@@ -83,3 +85,6 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return '/product' + str(self.slug)
+
+    def __str__(self):
+        return self.name
