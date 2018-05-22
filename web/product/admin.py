@@ -7,7 +7,7 @@ from django.contrib.contenttypes.admin import GenericTabularInline
 class ImageInline(GenericTabularInline):
     model = Image
     extra = 0
-    
+
 class ProductAdmin(admin.ModelAdmin):
     fieldsets = []
     readonly_fields = ('pub_date', 'mod_date')
