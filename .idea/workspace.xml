@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b1d3cdd2-0512-49e0-8700-3f2a63aed57d" name="migrate" comment="" />
     <list id="d077978c-6e60-4d52-86db-451f39498adf" name="Default" comment="">
       <change afterPath="$PROJECT_DIR$/backups/postgresql/dump_09-05-2018_13_13_12.sql" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/pgadmin/Dockerfile" afterDir="false" />
@@ -18,6 +17,7 @@
       <change beforePath="$PROJECT_DIR$/web/product/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/product/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/product/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/product/views.py" afterDir="false" />
     </list>
+    <list default="true" id="b1d3cdd2-0512-49e0-8700-3f2a63aed57d" name="migrate" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,24 +30,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/product/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="787">
-              <caret line="89" column="24" selection-start-line="89" selection-start-column="24" selection-end-line="89" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="category.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/product/templates/product/category.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="14" column="33" lean-forward="true" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/product/admin.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -60,8 +42,8 @@
       <file leaf-file-name="common.env" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="19">
+              <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -75,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="restore_db.sh" pinned="false" current-in-tab="true">
+      <file leaf-file-name="restore_db.sh" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/restore_db.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="2" column="39" lean-forward="true" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
+            <state relative-caret-position="95">
+              <caret line="5" column="62" selection-start-line="5" selection-start-column="62" selection-end-line="5" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -87,8 +69,29 @@
       <file leaf-file-name="drop_db.sh" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/drop_db.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="2" column="52" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="52" />
+            <state relative-caret-position="57">
+              <caret line="3" column="71" selection-start-line="3" selection-end-line="3" selection-end-column="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="product.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/product/templates/product/product.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="87" column="27" selection-start-line="87" selection-start-column="27" selection-end-line="87" selection-end-column="27" />
+              <folding>
+                <element signature="e#3685#3691#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/shop/static/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="787">
+              <caret line="199" column="1" selection-start-line="199" selection-start-column="1" selection-end-line="199" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -96,8 +99,8 @@
       <file leaf-file-name="redtraktor_initdb.sh" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/postgres/docker-entrypoint-initdb.d/redtraktor_initdb.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+            <state relative-caret-position="38">
+              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -133,6 +136,7 @@
     <findStrings>
       <find>pag</find>
       <find>scr</find>
+      <find>exa</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -181,12 +185,12 @@
         <option value="$PROJECT_DIR$/web/docker-entrypoint.d/redtraktor_initweb.sh" />
         <option value="$PROJECT_DIR$/web/shop/templates/breadcrumbs.html" />
         <option value="$PROJECT_DIR$/web/product/views.py" />
-        <option value="$PROJECT_DIR$/web/shop/static/css/style.css" />
-        <option value="$PROJECT_DIR$/web/product/templates/product/product.html" />
         <option value="$PROJECT_DIR$/web/product/models.py" />
         <option value="$PROJECT_DIR$/web/product/admin.py" />
-        <option value="$PROJECT_DIR$/scripts/restore_db.sh" />
         <option value="$PROJECT_DIR$/scripts/drop_db.sh" />
+        <option value="$PROJECT_DIR$/scripts/restore_db.sh" />
+        <option value="$PROJECT_DIR$/web/product/templates/product/product.html" />
+        <option value="$PROJECT_DIR$/web/shop/static/css/style.css" />
       </list>
     </option>
   </component>
@@ -210,6 +214,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -246,13 +251,59 @@
             </path>
             <path>
               <item name="redtraktor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="redtraktor" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="redtraktor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="redtraktor" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="product" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="redtraktor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="redtraktor" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="product" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="redtraktor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="redtraktor" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="product" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="product" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="redtraktor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="redtraktor" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="shop" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="redtraktor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="redtraktor" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="shop" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="redtraktor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="redtraktor" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="shop" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="redtraktor" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -569,6 +620,13 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/scripts/drop_db.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="71" selection-start-line="3" selection-end-line="3" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/product/templates/product/products_template.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -764,28 +822,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/static/favicon.ico">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2975" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/shop/static/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="190" selection-start-line="190" selection-end-line="195" selection-end-column="1" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/product/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
           <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -810,23 +855,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/product/templates/product/product.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="72" column="63" selection-start-line="72" selection-start-column="63" selection-end-line="72" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/product/templates/product/category.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
-          <caret line="14" column="33" lean-forward="true" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/product/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="787">
+        <state relative-caret-position="1596">
           <caret line="89" column="24" selection-start-line="89" selection-start-column="24" selection-end-line="89" selection-end-column="24" />
         </state>
       </provider>
@@ -852,24 +890,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/restore_db.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="62" selection-start-line="5" selection-start-column="62" selection-end-line="5" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/postgres/docker-entrypoint-initdb.d/redtraktor_initdb.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/drop_db.sh">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
-          <caret line="2" column="52" selection-start-line="2" selection-start-column="52" selection-end-line="2" selection-end-column="52" />
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -880,10 +911,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/restore_db.sh">
+    <entry file="file://$PROJECT_DIR$/common.env">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="39" lean-forward="true" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
+        <state relative-caret-position="19">
+          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/drop_db.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="71" selection-start-line="3" selection-end-line="3" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/product/templates/product/product.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="87" column="27" selection-start-line="87" selection-start-column="27" selection-end-line="87" selection-end-column="27" />
+          <folding>
+            <element signature="e#3685#3691#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/shop/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="787">
+          <caret line="199" column="1" selection-start-line="199" selection-start-column="1" selection-end-line="199" selection-end-column="1" />
         </state>
       </provider>
     </entry>

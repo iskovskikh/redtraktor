@@ -194,3 +194,7 @@ header .container {
     font-size: 1.75em;
     font-weight: 900;
 }
+
+.btn-primary {
+    background: #2ba8db;
+}

@@ -8,35 +8,35 @@
 {% endblock %}
 
 {% block content%}
-<section class="product">
+<section class="product py-3">
     <div class="row">
         <div class="col-md-6 col-lg-6">
             <div class="card">
                 <style>
-                    #carouselExampleIndicators .list-inline {
+                    #imgcarousel .list-inline {
                         white-space: nowrap;
                         /*overflow-x: auto;*/
                     }
 
-                    #carouselExampleIndicators .carousel-indicators {
+                    #imgcarousel .carousel-indicators {
                         position: static;
                         left: initial;
                         width: initial;
                         /*margin-left: initial;*/
                     }
 
-                    #carouselExampleIndicators .carousel-indicators > li {
+                    #imgcarousel .carousel-indicators > li {
                         width: initial;
                         height: initial;
                         text-indent: initial;
                     }
 
-                    #carouselExampleIndicators .carousel-indicators > li.active img {
+                    #imgcarousel .carousel-indicators > li.active img {
                         opacity: 0.7;
                     }
                 </style>
 
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div id="imgcarousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         {% if product.images %}
                         {% for img in product.images.all %}
@@ -50,11 +50,11 @@
                         </div>
                         {% endif %}
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <a class="carousel-control-prev" href="#imgcarousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <a class="carousel-control-next" href="#imgcarousel" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
@@ -63,7 +63,8 @@
                         {% if product.images %}
                         {% for img in product.images.all %}
                         <!--<div class="carousel-item">-->
-                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter|add:'-1' }}" {% if forloop.first %} class="active" {% endif %}>
+                        <li data-target="#imgcarousel" data-slide-to="{{ forloop.counter|add:'-1' }}"
+                            {%if forloop.first %} class="active" {% endif %}>
                             <img class="img-fluid d-block w-100" src="{{ img.image.url }}" alt="{{ img.caption }}">
                         </li>
                         <!--</div>-->
@@ -78,10 +79,80 @@
             </div>
         </div>
         <div class="col-md-6 col-lg-6">
-            <h1>{{ product.name }}</h1>
-            <div class="price">{{ product.price }}<i class="fas fa-ruble-sign"></i></div>
-            <p>{{ product.description }}</p>
+            <h1 class="display-5">{{ product.name }}</h1>
+            <p>Аппарат плазменной резки</p>
+            <div class="price">{{ product.price }}&nbsp;<i class="fas fa-ruble-sign"></i></div>
+            <div class="py-3">
+                <a class="btn btn-primary" id="addItemToCart" href="#"><i class="icon-shopping-cart"></i>Купить</a>
+            </div>
+            <div class="py-3">
+                <ul>
+                    <li>плавный поджиг дуги касанием с высокочастотным управлением</li>
+                    <li>качественный тонкий шов и прекрасная скорость работы</li>
+                    <li>отсутствие деформации и коробления металла</li>
+                    <li>рекомендуемая толщина: 10 мм (конструкционная сталь)</li>
+                    <li>портативный и энергосберегающий</li>
+                    <li>классический инвертор MOSFET на базе японских транзисторов FUJI</li>
+                </ul>
+            </div>
+
+
         </div>
+
+
     </div>
+</section>
+<section class="py-3">
+    <table class="table">
+        <tbody>
+        <tr>
+            <td>Напряжение питающей сети</td>
+            <td>220 В</td>
+        </tr>
+        <tr>
+            <td>Потребляемый ток при максимальной нагрузке</td>
+            <td>30 А</td>
+        </tr>
+        <tr>
+            <td>Потребляемая мощность</td>
+            <td>6.6 кВА</td>
+        </tr>
+        <tr>
+            <td>Режущий ток</td>
+            <td>15 - 40 А</td>
+        </tr>
+        <tr>
+            <td>Максимальная толщина реза</td>
+            <td>12 мм</td>
+        </tr>
+        <tr>
+            <td>Потребление воздуха</td>
+            <td>170 л/мин</td>
+        </tr>
+        <tr>
+            <td>Степень защиты</td>
+            <td>IP21</td>
+        </tr>
+        <tr>
+            <td>Вес</td>
+            <td>11 кг</td>
+        </tr>
+        <tr>
+            <td>Габаритные размеры</td>
+            <td>395x153x301 мм</td>
+        </tr>
+        <tr>
+            <td>Давление сжатого воздуха</td>
+            <td>4 - 5 Бар</td>
+        </tr>
+        <tr>
+            <td>Температурный диапазон работы</td>
+            <td>-20 ; +50 °C</td>
+        </tr>
+
+        </tbody>
+    </table>
+    <p>{{ product.description}}</p>
+
 </section>
 {% endblock %}
