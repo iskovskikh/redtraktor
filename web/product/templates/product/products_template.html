@@ -10,7 +10,9 @@
                     {% endif %}
                     <div class="card-body">
                         <a href="{% url 'product' product.slug %}"><h6 class="card-title">{{ product.name }}</h6></a>
-                        <p class="card-text">{{ product.description }}</p>
+                        {% if product.short_description %}
+                            <p class="card-text">{{ product.short_description }}</p>
+                        {% endif %}
                         <!--<a href="#" class="card-link">Купить</a>-->
                     </div>
                 </div>

@@ -8,21 +8,25 @@ from django.contrib.contenttypes.models import ContentType
 # Create your models here.
 
 class Image(models.Model):
-    caption = models.TextField()
+    caption = models.CharField(max_length=256)
     image = models.ImageField(null = True, blank = True)
 
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
 
+class Spec(models.Model):
+    caption = models.CharField(max_length=256)
+    value = models.CharField(max_length=256)
+
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
 
 class Category(models.Model):
     name = models.CharField(max_length=256)
     slug = models.SlugField(max_length=40)
-    # nesting_level = models.IntegerField()
-    # product = models.ManyToManyField(Product, blank=True)
     parent = models.ForeignKey('self', default=None, null=True, blank=True, related_name='children', on_delete=models.CASCADE)
-    # image = models.ImageField(null=True, blank=True)
     pub_date = models.DateTimeField('date published')
     mod_date = models.DateTimeField('date modified')
 
@@ -64,15 +68,17 @@ class Category(models.Model):
 
     def get_products(self):
         products = Product.objects.filter(category=self)
-        return products #self.product.objects.all()
+        return products
 
 class Product(models.Model):
     name = models.CharField(max_length=256)
     slug = models.SlugField(max_length=40)
-    description = models.TextField()
-    # image = models.ImageField(null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    short_description = models.CharField(max_length=80, null=True, blank=True)
+    features = models.TextField(null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     images = GenericRelation(Image)
+    specs = GenericRelation(Spec)
     price = models.DecimalField(max_digits=12, decimal_places=2)
     pub_date = models.DateTimeField('date published')
     mod_date = models.DateTimeField('date modified')
@@ -88,3 +94,5 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
