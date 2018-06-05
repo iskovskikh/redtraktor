@@ -4,16 +4,31 @@ from django.urls import reverse
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.contenttypes.models import ContentType
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
+from imagekit.processors import ResizeToFit
+from imagekit.processors import SmartResize
+
 
 # Create your models here.
 
 class Image(models.Model):
     caption = models.CharField(max_length=256)
-    image = models.ImageField(null = True, blank = True)
+    image = models.ImageField(null=True, blank=True)
+    image_253x253 = ImageSpecField(source='image',
+                                   processors=[ResizeToFit(253, 253, mat_color=(255, 255, 255))],
+                                   format='JPEG',
+                                   options={'quality': 90})
+
+    image_538x538 = ImageSpecField(source='image',
+                                   processors=[ResizeToFit(538, 538, mat_color=(255, 255, 255))],
+                                   format='JPEG',
+                                   options={'quality': 90})
 
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
+
 
 class Spec(models.Model):
     caption = models.CharField(max_length=256)
@@ -23,10 +38,12 @@ class Spec(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
 
+
 class Category(models.Model):
     name = models.CharField(max_length=256)
     slug = models.SlugField(max_length=40)
-    parent = models.ForeignKey('self', default=None, null=True, blank=True, related_name='children', on_delete=models.CASCADE)
+    parent = models.ForeignKey('self', default=None, null=True, blank=True, related_name='children',
+                               on_delete=models.CASCADE)
     pub_date = models.DateTimeField('date published')
     mod_date = models.DateTimeField('date modified')
 
@@ -70,6 +87,7 @@ class Category(models.Model):
         products = Product.objects.filter(category=self)
         return products
 
+
 class Product(models.Model):
     name = models.CharField(max_length=256)
     slug = models.SlugField(max_length=40)
@@ -94,5 +112,3 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
-
-

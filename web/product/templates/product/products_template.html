@@ -4,7 +4,7 @@
             <div class="col-lg-3 col-md-4 col-sm-6 d-flex align-items-stretch">
                 <div class="card">
                     {% if product.images %}
-                        <a href="{% url 'product' product.slug %}"><img class="img-fluid" src="{{ product.images.first.image.url }}"></a>
+                        <a href="{% url 'product' product.slug %}"><img class="img-fluid" src="{{ product.images.first.image_253x253.url }}"></a>
                     {% else %}
                         <a href="{% url 'product' product.slug %}"><img class="img-fluid" src="/media/placeholder.png"></a>
                     {% endif %}

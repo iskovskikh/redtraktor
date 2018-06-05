@@ -7,7 +7,7 @@ backups/postgres
 backups/postgresql
 web/*.sqlite3
 
-
+web/media/CACHE/
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/

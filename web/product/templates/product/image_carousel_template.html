@@ -29,7 +29,7 @@
             {% if product.images.count > 1 %}
                 {% for img in product.images.all %}
                     <div class="carousel-item{% if forloop.first %} active{% endif %}">
-                        <img class="img-fluid d-block w-100" src="{{ img.image.url }}" alt="{{ img.caption }}">
+                        <img class="img-fluid d-block w-100" src="{{ img.image_538x538.url }}" alt="{{ img.caption }}">
                     </div>
                 {% endfor %}
                 <a class="carousel-control-prev" href="#imgcarousel" role="button" data-slide="prev">
@@ -45,7 +45,7 @@
                     {% for img in product.images.all %}
                     <li data-target="#imgcarousel" data-slide-to="{{ forloop.counter|add:'-1' }}"
                         {%if forloop.first %} class="active" {% endif %}>
-                        <img class="img-fluid d-block w-100" src="{{ img.image.url }}" alt="{{ img.caption }}">
+                        <img class="img-fluid d-block w-100" src="{{ img.image_538x538.url }}" alt="{{ img.caption }}">
                     </li>
                     {% endfor %}
                 </ol>
