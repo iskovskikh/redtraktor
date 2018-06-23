@@ -24,6 +24,17 @@ def product(request, slug = None):
     }
     return render(request, 'product/product.html', context)
 
+def test(request):
+
+    i = []
+    for p in Product.objects.all():
+        i = [p.images.all()]
+
+    context = {
+        'imgs':i
+    }
+    return render(request, 'product/test.html', context)
+
 def category(request, hierarchy= None):
 
     if hierarchy != None:
