@@ -2,11 +2,12 @@
 
 *.env
 */migrations/
+
 !backups
 backups/postgres
 backups/postgresql
 web/*.sqlite3
-
+web/upload/
 web/media/CACHE/
 ### Python ###
 # Byte-compiled / optimized / DLL files

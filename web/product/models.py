@@ -10,12 +10,13 @@ from imagekit.processors import ResizeToFit
 from imagekit.processors import SmartResize
 from django.utils.text import slugify
 from unidecode import unidecode
+from .storage import MyImageStorage
 
 # Create your models here.
 
-class Image(models.Model):
+class ShopImage(models.Model):
     caption = models.CharField(max_length=256)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, storage=MyImageStorage())
     image_253x253 = ImageSpecField(source='image',
                                    processors=[ResizeToFit(253, 253, mat_color=(255, 255, 255))],
                                    format='JPEG',
@@ -30,6 +31,9 @@ class Image(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
 
+    def __str__(self):
+        return '{} ({})'.format(self.image, self.caption)
+
 class Test(models.Model):
     testcontent= models.CharField(max_length=255)
 
@@ -38,7 +42,8 @@ class Test(models.Model):
     content_object = GenericForeignKey('content_type', 'object_id')
 
 
-
+# class SpecType(models.Model):
+#     caption = models.CharField(max_length=256)
 
 class Spec(models.Model):
     caption = models.CharField(max_length=256)
@@ -120,7 +125,7 @@ class Product(models.Model):
     short_description = models.CharField(max_length=80, null=True, blank=True)
     features = models.TextField(null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    images = GenericRelation(Image, related_query_name='products')
+    images = GenericRelation(ShopImage, related_query_name='products')
     specs = GenericRelation(Spec)
     price = models.DecimalField(max_digits=12, decimal_places=2)
     pub_date = models.DateTimeField('date published', auto_now_add = True)
