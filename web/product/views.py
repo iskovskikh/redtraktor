@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render
 
 # Create your views here.
@@ -51,10 +52,15 @@ def category(request, hierarchy= None):
     for breadcrumb in parent.get_all_parents_path():
         breadcrumbs.append({'name': breadcrumb.name, 'url': breadcrumb.get_absolute_url()})
 
+    product_list = parent.get_products()
+    paginator = Paginator(product_list, 16)  # Show 25 contacts per page
+    page = request.GET.get('page')
+    products = paginator.get_page(page)
+
     context = {
         'parent':parent,
         'categories': parent.children.all,
-        'products': parent.get_products,
+        'products': products,
         'breadcrumbs': breadcrumbs,
     }
 

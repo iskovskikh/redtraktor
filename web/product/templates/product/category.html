@@ -17,6 +17,7 @@
 
     {%if products %}
         {% include 'product/products_template.html' with products=products %}
+        {% include 'pagination.html' with items=products%}
     {% endif %}
 
 {% endblock %}
