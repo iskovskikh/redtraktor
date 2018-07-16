@@ -5,7 +5,9 @@ from django.conf import settings
 from import_export import widgets
 from import_export import fields
 import os
+from parse import *
 from .models import *
+
 
 class MyCategoryWidjet(widgets.Widget):
 
@@ -22,8 +24,8 @@ class MyCategoryWidjet(widgets.Widget):
         category = Category()
         for category_name in value.split(self.separator):
             category, created = Category.objects.get_or_create(
-                name = category_name,
-                parent = category_parent
+                name=category_name,
+                parent=category_parent
                 # defaults = {'slug': slugify(unidecode(category_name))}
             )
             category_parent = category
@@ -37,10 +39,9 @@ class MyCategoryWidjet(widgets.Widget):
 
 class MyGenericRelationsWidget(widgets.ManyToManyWidget):
 
-
     def __init__(self, model, separator=None, field=None, *args, **kwargs):
         if separator is None:
-            separator = ';\n'
+            separator = ';'
         if field is None:
             field = 'pk'
         self.model = model
@@ -91,23 +92,51 @@ class MyGenericImageWidget(MyGenericRelationsWidget):
         if value:
             for item in value.split(self.separator):
                 if item:
-                    u,c = item.split(':')
+                    u, c = item.split(':')
                     if u and c:
                         p.images.create(caption=c,
-
                                         image=ImageFile(
-
                                             File(
                                                 open(settings.BASE_DIR + u, 'rb')
-
-                                            ),name=os.path.basename(u)))
+                                            ),
+                                            name=os.path.basename(u)))
         return p.images.all()
-
 
     def render_obj(self, obj):
         return '%s:%s' % (obj.image.url, obj.caption)
 
-# class MyGenericSpecWidget(MyGenericRelationsWidget):
-#
-#     def render_obj(self, obj):
-#         return '%s, %s' % (obj.va)
+
+class MyGenericSpecWidget(MyGenericRelationsWidget):
+
+    def clean(self, value, row=None, *args, **kwargs):
+        p = self.get_queryset(value, row)
+        p.specs.all().delete()
+        if value:
+            for item in value.split(self.separator):
+                if item:
+                    caption, value_and_unit = item.split(':')
+                    if caption and value_and_unit:
+                        # val, unit = value_and_unit[:-1].split('[')
+                        tmp = value_and_unit[:-1].split('[')
+                        if len(tmp)==2:
+                            val, unit = tmp
+                        else:
+                            val = tmp
+                            unit = None
+
+                        if unit:
+                            u, created = SpecUnit.objects.get_or_create(name=unit)
+                            c, created = SpecItem.objects.get_or_create(name=caption, unit=u)
+                        else:
+                            c, created = SpecItem.objects.get_or_create(name=caption)
+
+                        if val:
+                            p.specs.create(caption=c, value=val)
+
+        return p.specs.all()
+
+    def render_obj(self, obj):
+        if obj.caption.unit:
+            return '%s:%s[%s]' % (obj.caption.name, obj.value, obj.caption.unit.name)
+        else:
+            return '%s:%s[]' % (obj.caption.name, obj.value)

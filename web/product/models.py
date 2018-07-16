@@ -45,8 +45,19 @@ class Test(models.Model):
 # class SpecType(models.Model):
 #     caption = models.CharField(max_length=256)
 
+class SpecUnit(models.Model):
+    name = models.CharField(max_length=256, unique=True)
+    def __str__(self):
+        return self.name
+
+class SpecItem(models.Model):
+    name = models.CharField(max_length=256)
+    unit = models.ForeignKey(SpecUnit, default=None, null=True, blank=True, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name
+
 class Spec(models.Model):
-    caption = models.CharField(max_length=256)
+    caption = models.ForeignKey(SpecItem, default=None, null=False, blank=False, on_delete=models.CASCADE)
     value = models.CharField(max_length=256)
 
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
@@ -119,14 +130,14 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=256)
-    slug = models.SlugField(max_length=40, unique=True, blank=True)
+    slug = models.SlugField(max_length=256, unique=True, blank=True)
     sku = models.CharField(max_length=32, unique=True)
     description = models.TextField(null=True, blank=True)
     short_description = models.CharField(max_length=80, null=True, blank=True)
     features = models.TextField(null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     images = GenericRelation(ShopImage, related_query_name='products')
-    specs = GenericRelation(Spec)
+    specs = GenericRelation(Spec, related_query_name='products')
     price = models.DecimalField(max_digits=12, decimal_places=2)
     pub_date = models.DateTimeField('date published', auto_now_add = True)
     mod_date = models.DateTimeField('date modified', auto_now = True)

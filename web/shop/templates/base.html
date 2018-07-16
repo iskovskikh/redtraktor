@@ -15,30 +15,31 @@
 
 </head>
 <body>
+<wrapper class="d-flex flex-column">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MWBFC5"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MWBFC5"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <!--Header-->
+    {% block header %}
+    {% include 'header.html'%}
+    {% endblock %}
+    <!--Header Close-->
+    <!--Content-->
 
-<!--Header-->
-{% block header %}
-{% include 'header.html'%}
-{% endblock %}
-<!--Header Close-->
-<!--Content-->
-
-<div class="page-content">
-    <div class="container">
-        {% block breadcrumbs%}<!--Breadcrumbs-->{% endblock %}
-        {% block content%}<!--Content-->{% endblock %}
+    <div class="page-content flex-fill">
+        <div class="container">
+            {% block breadcrumbs%}<!--Breadcrumbs-->{% endblock %}
+            {% block content%}<!--Content-->{% endblock %}
+        </div>
     </div>
-</div>
-<!--Content Close-->
-<!--Footer-->
-{% block footer %}
-{% include 'footer.html'%}
-{% endblock %}
-<!--Footer Close-->
+    <!--Content Close-->
+    <!--Footer-->
+    {% block footer %}
+    {% include 'footer.html'%}
+    {% endblock %}
+    <!--Footer Close-->
+</wrapper>
 </body>
 </html>

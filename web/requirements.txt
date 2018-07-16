@@ -8,3 +8,4 @@ setuptools
 django-imagekit
 django-import-export==1.0.1
 Unidecode==1.0.22
+parse==1.8.4

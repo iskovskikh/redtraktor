@@ -19,6 +19,10 @@ class SpecInline(GenericTabularInline):
     model = Spec
     extra = 0
 
+class SpecUnitsInline(admin.StackedInline):
+    model = SpecUnit
+    extra = 0
+
 
 # class ProductAdmin(admin.ModelAdmin):
 #     fieldsets = []
@@ -33,7 +37,11 @@ class SpecInline(GenericTabularInline):
 #     # list_display = ('question_text', 'pub_date', 'was_published_recently')
 #     # list_filter = ['pub_date']
 #     # search_fields = ['question_text']
+class SpecUnitsAdmin(admin.ModelAdmin):
+    fieldsets = []
 
+class SpecItemsAdmin(admin.ModelAdmin):
+    fieldsets = []
 
 class CategoryAdmin(admin.ModelAdmin):
     fieldsets = []
@@ -48,6 +56,12 @@ class ProductResource(resources.ModelResource):
         attribute='images',
         widget=MyGenericImageWidget(Product, field = "image"))  # use a unique field
 
+    specs = fields.Field(
+        column_name='specs',
+        attribute='specs',
+        widget=MyGenericSpecWidget(Product,field = "specs")
+    )
+    
     category = fields.Field(
         column_name='category',
         attribute='category',
@@ -68,7 +82,7 @@ class ProductResource(resources.ModelResource):
         model = Product
         import_id_fields = ('sku',)
         export_order = (
-            "sku", "name", "slug", "price", "category", "short_description", "images", "description", "features", "pub_date",
+            "sku", "name", "slug", "price", "category", "short_description", "images", "specs", "description", "features", "pub_date",
             "mod_date",)
 
         exclude = ("id",)
@@ -99,3 +113,5 @@ class ShopImageAdmin(admin.ModelAdmin):
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(ShopImage, ShopImageAdmin)
+admin.site.register(SpecItem, SpecItemsAdmin)
+admin.site.register(SpecUnit, SpecUnitsAdmin)

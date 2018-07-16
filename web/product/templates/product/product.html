@@ -34,10 +34,14 @@
     <table class="table">
         <tbody>
             {% if product.images %}
-                {% for spec in product.specs.all %}
+                {% for spec in product.specs.all|dictsort:"caption.name" %}
                 <tr>
-                    <td>{{ spec.caption }}</td>
-                    <td>{{ spec.value }}</td>
+                    <td>{{ spec.caption.name }}</td>
+                    {% if spec.caption.unit.name %}
+                        <td>{{ spec.value }} [{{spec.caption.unit.name}}]</td>
+                    {% else %}
+                        <td>{{ spec.value }}</td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
             {% endif %}
